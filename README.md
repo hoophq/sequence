@@ -1,52 +1,57 @@
-# decimals
+Sequence
+==========
+- Website: https://decimals.app/sequence
+- Community: [Decimals Slack](https://decimalsapp.slack.com)
+- Documentation: [https://docs.decimals.app/](https://docs.decimals.app/)
 
-```
-jq -ncM 'while(true; .+1) | {method: "POST", header: {"x-api-key":["decimals"]}, url: "http://localhost:8890/v1/transactions", body: {amount: ., from: "Bob", to: "Alice", currency: "usd"} | @base64 }' | \
-  vegeta attack -rate=50/s -lazy -format=json -duration=30s | \
-  tee results.bin | \
-  vegeta report
-```
+<img alt="Sequence" src="https://decimals.app/dist/images/sequence.png" width="600px">
 
-FIXME
+Sequence is an API that store validate and reports asset movements. Also known as a Ledger. Sequence is immutable, scalable, and easy to use.
+
+The key features of Sequence are:
+
+- **Multi-Currency**: Store, move and analyse any asset, from regular currencies like USD, to shelf items. 
+
+- **Multi-Tenant**: Run multiple ledgers using the same infrastructure. Simply setup multiple tenants in the configurations and use the different API keys.
+
+- **No-SQL powered**: Sequence runs on top of a No-SQL database. It is horizontally scalable from the 12-factors contianer to the persistency layer.
+
+- **Immutable**: Most existing ledger use database updates. This is bad for a ledger. Sequence is immutable. The design of the database allows for consistency of balances without a single field using updateds.
+
+- **API simplicity**: Sequence creates things as you use them. When you send value to an account, it is gets created if it does not exist. It gets out of the way. Use it, and things will work.
+
+- **Analytics**: Send asset movement events to multiple destinations. Use it for analytics, fraud-detection, anything.
 
 ## Getting Started
 
-1. Start the application: `lein run`
-2. Go to [localhost:8080](http://localhost:8080/) to see: `Hello World!`
-3. Read your app's source code at src/decimals/service.clj. Explore the docs of functions
-   that define routes and responses.
-4. Run your app's tests with `lein test`. Read the tests at test/decimals/service_test.clj.
-5. Learn more! See the [Links section below](#links).
+### docker-compose
 
+`docker-compose up`
 
-## Configuration
+The `docker-compose` file brings up:
 
-To configure logging see config/logback.xml. By default, the app logs to stdout and logs/.
-To learn more about configuring Logback, read its [documentation](http://logback.qos.ch/documentation.html).
+1. DynamoDB local with the Sequence table structure
+2. The Sequence container
 
+## Configurations
 
-## Developing your service
+All configurations are loaded from environment varialbes. The available configurations are:
+
+| environment variable | configuration | dev profile |
+|----------------------|---|---------------|
+| `DYNAMODB_ENDPOINT`  | The host for the DynamoDB instance. Mostly used for local development.  | `http://localhost:8000` |
+| `SEGMENT_KEY`         | Optional Segment.io key to generate analytics events. |                         |
+| `KEYS`                 | A string with a list of tenants and their `sha256` API keys digests. In json format. | `[{ "name": "test","email": "test@decimals.app", "public-key": "abc", "secret-key-hash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"}]` |
+
+Configurations can also be loaded from the `profiles.clj` file, where the dev configurations are setup.
+
+## Developing Sequence
 
 1. Start a new REPL: `lein repl`
-2. Start your service in dev-mode: `(def dev-serv (run-dev))`
+2. Start Sequence in dev-mode: `(def dev-serv (run-dev))`
 3. Connect your editor to the running REPL session.
    Re-evaluated code will be seen immediately in the service.
 
-### [Docker](https://www.docker.com/) container support
-
-1. Configure your service to accept incoming connections (edit service.clj and add  ::http/host "0.0.0.0" )
-2. Build an uberjar of your service: `lein uberjar`
-3. Build a Docker image: `sudo docker build -t decimals .`
-4. Run your Docker image: `docker run -p 8080:8080 decimals`
-
-### [OSv](http://osv.io/) unikernel support with [Capstan](http://osv.io/capstan/)
-
-1. Build and run your image: `capstan run -f "8080:8080"`
-
-Once the image it built, it's cached.  To delete the image and build a new one:
-
-1. `capstan rmi decimals; capstan build`
-
-
 ## Links
-* [Other Pedestal examples](http://pedestal.io/samples)
+* [Sequence design](https://decimals.substack.com/p/things-i-wish-i-knew-before-building)
+* [Open-source ledgers](http://decimals.app)
