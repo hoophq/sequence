@@ -23,6 +23,7 @@ The key features of Sequence are:
 - **Analytics**: Send asset movement events to multiple destinations. Use it for analytics, fraud-detection, anything.
 
 ## Getting Started
+--------------------
 
 ### docker-compose
 
@@ -34,6 +35,7 @@ The `docker-compose` file brings up:
 2. The Sequence container
 
 ## Configurations
+-------------------
 
 All configurations are loaded from environment varialbes. The available configurations are:
 
@@ -46,6 +48,7 @@ All configurations are loaded from environment varialbes. The available configur
 Configurations can also be loaded from the `profiles.clj` file, where the dev configurations are setup.
 
 ## Developing Sequence
+------------------------
 
 1. Start a new REPL: `lein repl`
 2. Start Sequence in dev-mode: `(def dev-serv (run-dev))`
@@ -53,5 +56,6 @@ Configurations can also be loaded from the `profiles.clj` file, where the dev co
    Re-evaluated code will be seen immediately in the service.
 
 ## Links
+---------
 * [Sequence design](https://decimals.substack.com/p/things-i-wish-i-knew-before-building)
 * [Open-source ledgers](http://decimals.app)
