@@ -1,0 +1,84 @@
+{
+  "ModelName": "sequence",
+  "ModelMetadata": {
+    "Author": "",
+    "DateCreated": "Jun 24, 2020, 09:10 PM",
+    "DateLastModified": "Sep 02, 2020, 02:19 PM",
+    "Description": "",
+    "Version": "1.0"
+  },
+  "DataModel": [
+    {
+      "TableName": "sequence",
+      "KeyAttributes": {
+        "PartitionKey": {
+          "AttributeName": "PK",
+          "AttributeType": "S"
+        },
+        "SortKey": {
+          "AttributeName": "SK",
+          "AttributeType": "S"
+        }
+      },
+      "NonKeyAttributes": [
+        {
+          "AttributeName": "GSI1_PK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "GSI1_SK",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "currency",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "timestamp",
+          "AttributeType": "S"
+        },
+        {
+          "AttributeName": "LSI1_SK",
+          "AttributeType": "S"
+        }
+      ],
+      "GlobalSecondaryIndexes": [
+        {
+          "IndexName": "LSI1",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "PK",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "LSI1_SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        },
+        {
+          "IndexName": "GSI1",
+          "KeyAttributes": {
+            "PartitionKey": {
+              "AttributeName": "GSI1_PK",
+              "AttributeType": "S"
+            },
+            "SortKey": {
+              "AttributeName": "GSI1_SK",
+              "AttributeType": "S"
+            }
+          },
+          "Projection": {
+            "ProjectionType": "ALL"
+          }
+        }
+      ],
+      "DataAccess": {
+        "MySql": {}
+      }
+    }
+  ]
+}
