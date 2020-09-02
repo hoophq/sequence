@@ -6,6 +6,7 @@
             [clojure.spec.gen.alpha :as gen]
             [decimals.dynamodb :as db]
             [decimals.balances :as b]
+            [decimals.specs]
             [decimals.transactions :as tx]))
 
 (deftest hash-txs-test
