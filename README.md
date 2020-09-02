@@ -1,7 +1,7 @@
 Sequence
 ==========
 - Website: https://decimals.app/sequence
-- Community: [Decimals Slack](https://decimals.app)
+- Community: [Decimals Slack](https://decimalsapp.slack.com)
 - Documentation: [https://docs.decimals.app/](https://docs.decimals.app/)
 
 <img alt="Sequence" src="https://decimals.app/dist/images/sequence.png" width="600px">
