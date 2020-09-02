@@ -4,6 +4,8 @@ Sequence
 - Community: [Decimals Slack](https://decimals.app)
 - Documentation: [https://docs.decimals.app/](https://docs.decimals.app/)
 
+<img alt="Sequence" src="https://decimals.app/dist/images/sequence.png" width="600px">
+
 Sequence is an API that stores, validates and reports asset movements. Also known as a Ledger. Sequence is immutable, scalable, and minimalist.
 
 The key features of Sequence are:
