@@ -10,24 +10,40 @@ Sequence is an API that store validate and reports asset movements. Also known a
 
 The key features of Sequence are:
 
-- **Currency Agnostic**: Store, move and analyse any asset, from regular currencies like USD, to shelf items. 
+- **Multi-Currency**: Store, move and analyse any asset, from regular currencies like USD, to shelf items. 
 
-- **Simple API**: Sequence creates things as you use them. When you send value to an account, it is gets created if it does not exist. It gets out of the way. use it, and things will work.
+- **Multi-Tenant**: Run multiple ledgers using the same infrastructure. Simply setup multiple tenants in the configurations and use the different API keys.
+
+- **No-SQL powered**: Sequence runs on top of a No-SQL database. It is horizontally scalable from the 12-factors contianer to the persistency layer.
 
 - **Immutable**: Most existing ledger use database updates. This is bad for a ledger. Sequence is immutable. The design of the database allows for consistency of balances without a single field using updateds.
 
-- **No-SQL database**: Sequence runs on top of a No-SQL database. It is horizontally scalable from the 12-factors contianer to the persistency layer.
+- **API simplicity**: Sequence creates things as you use them. When you send value to an account, it is gets created if it does not exist. It gets out of the way. Use it, and things will work.
+
+- **Analytics**: Send asset movement events to multiple destinations. Use it for analytics, fraud-detection, anything.
 
 ## Getting Started
 
-### Docker
+### docker-compose
 
-### Clojure lein
+`docker-compose up`
 
-1. Start the application: `lein run`
+The `docker-compose` file brings up:
+
+1. DynamoDB local with the Sequence table structure
+2. The Sequence container
 
 ## Configurations
 
+All configurations are loaded from environment varialbes. The available configurations are:
+
+| environment variable | configuration | dev profile |
+|----------------------|---|---------------|
+| `DYNAMODB_ENDPOINT`  | The host for the DynamoDB instance. Mostly used for local development.  | `http://localhost:8000` |
+| `SEGMENT_KEY`         | Optional Segment.io key to generate analytics events. |                         |
+| `KEYS`                 | A string with a list of tenants and their `sha256` API keys digests. In json format. | `[{ "name": "test","email": "test@decimals.app", "public-key": "abc", "secret-key-hash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"}]` |
+
+Configurations can also be loaded from the `profiles.clj` file, where the dev configurations are setup.
 
 ## Developing Sequence
 
