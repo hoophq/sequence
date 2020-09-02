@@ -6,17 +6,17 @@ Sequence
 
 <img alt="Sequence" src="https://decimals.app/dist/images/sequence.png" width="600px">
 
-Sequence is an API that stores, validates and reports asset movements. Also known as a Ledger. Sequence is immutable, scalable, and minimalist.
+Sequence is an API that store validate and reports asset movements. Also known as a Ledger. Sequence is immutable, scalable, and easy to use.
 
 The key features of Sequence are:
 
-- **Currency Agnostic**: Store and move any asset, from regular currencies like USD, to shelf items. 
+- **Currency Agnostic**: Store, move and analyse any asset, from regular currencies like USD, to shelf items. 
 
-- **Easy API**: Sequence creates things as you use them. When you send value to an account, it is created if it does not exist. It gets out of the way. Just use it, and things will work.
+- **Simple API**: Sequence creates things as you use them. When you send value to an account, it is gets created if it does not exist. It gets out of the way. use it, and things will work.
 
-- **Immutability**: Most existing ledger use database updates. This is bad for a ledger. Sequence is completelly immutable. The design of the database allows for consistency of balances without a single field being updated.
+- **Immutable**: Most existing ledger use database updates. This is bad for a ledger. Sequence is immutable. The design of the database allows for consistency of balances without a single field using updateds.
 
-- **No-SQL Scalability**: Sequence runs on top of a No-SQL database, making it horizontally scalable from the 12-factors contianer to the database layer.
+- **No-SQL database**: Sequence runs on top of a No-SQL database. It is horizontally scalable from the 12-factors contianer to the persistency layer.
 
 ## Getting Started
 
