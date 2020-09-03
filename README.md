@@ -17,6 +17,7 @@ The key features of Sequence are:
 
 - **Multi-Tenant**: Run multiple ledgers using the same infrastructure. Simply setup multiple tenants in the configurations and use the different API keys.
 
+
 - **No-SQL powered**: Sequence runs on top of a No-SQL database. It is horizontally scalable from the 12-factors contianer to the persistency layer.
 
 - **Immutable**: Most existing ledger use database updates. This is bad for a ledger. Sequence is immutable. The design of the database allows for consistency of balances without a single field using updateds.
@@ -29,12 +30,27 @@ The key features of Sequence are:
 
 ### docker-compose
 
-`docker-compose up`
+1. Clone and cd into the repository
+2. Use docker-compose to bring up DynamoDB local and Sequence
 
-The `docker-compose` file brings up:
+```
+git clone https://github.com/decimals/sequence.git
 
-1. DynamoDB local with the Sequence table structure
-2. The Sequence container
+cd sequence
+
+docker-compose up
+```
+
+### Docker
+
+1. Start the DynamoDB local container
+2. Start the Sequence container
+
+```
+docker run -p 8000:8000 amazon/dynamodb-local
+
+docker run -p 8910:8910 docker.pkg.github.com/decimals/sequence/sequence:0.0.1
+```
 
 ## Configurations
 
