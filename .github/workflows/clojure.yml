@@ -21,5 +21,5 @@ jobs:
       run: docker build -t docker.pkg.github.com/decimals/sequence/sequence:0.0.1 .
     - name: Docker push
       run: |
-        docker login https://docker.pkg.github.com -u ${{ secrets.GITHUB_TOKEN }} --password-stdin
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login https://docker.pkg.github.com -u ${{ secrets.GITHUB_TOKEN }} --password-stdin
         docker push docker.pkg.github.com/decimals/sequence/sequence:0.0.1
