@@ -18,7 +18,7 @@ jobs:
     - name: Run tests
       run: lein test
     - name: Docker build
-      run: docker build . -t docker.pkg.github.com/decimals/sequence/sequence:0.0.1 .
+      run: docker build -t docker.pkg.github.com/decimals/sequence/sequence:0.0.1 .
     - name: Docker push
       run: |
         docker login https://docker.pkg.github.com -u ${{ secrets.GITHUB_TOKEN }} --password-stdin
