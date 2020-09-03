@@ -4,6 +4,13 @@ volumes:
   dynamodb_data:
 
 services:
+  sequence:
+    image: docker.pkg.github.com/decimals/sequence/sequence:0.0.1
+    ports:
+    - "8910:8910"
+    environment:
+    - 'DYNAMODB_ENDPOINT=http://localhost:8000'
+    - 'KEYS=[{ \"name\": \"test\",\"email\": \"test@decimals.app\", \"public-key\": \"abc\", \"secret-key-hash\": \"a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3\"}]'
   dynamodb:
     image: amazon/dynamodb-local
     command: -jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal/data/
