@@ -17,10 +17,9 @@ jobs:
       run: lein deps
     - name: Run tests
       run: lein test
-    - name: Build and push Docker images
-      uses: docker/build-push-action@v1.1.0
-      with:
-        username: ${{ secrets.GITHUB_TOKEN }}
-        # Password or personal access token used to log in to a Docker registry. If not set then no login will occur
-        password: ""
-        registry: ghcr.io/decimals/sequence
+    - name: Docker build
+      run: docker build . -t docker.pkg.github.com/decimals/sequence/sequence:0.0.1 .
+    - name: Docker push
+      run: |
+        docker login https://docker.pkg.github.com -u ${{ secrets.GITHUB_TOKEN }} --password-stdin
+        docker push docker.pkg.github.com/decimals/sequence/sequence:0.0.1
