@@ -1,0 +1,284 @@
+openapi: 3.0.0
+info:
+  title: Decimals
+  version: '1.0'
+  description: |-
+    ## API Reference
+    The Sequence API is organized around REST. Our API has predictable resource-oriented URLs, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
+  contact:
+    email: rob@decimals.app
+    name: Rob
+    url: 'https://decimals.app'
+servers:
+  - url: 'https://api.decimals.app/v1'
+    description: v1
+paths:
+  /transactions:
+    post:
+      summary: Create Transactions
+      responses:
+        '201':
+          description: The Transaction object created.
+          content:
+            application/json:
+              schema:
+                title: transaction
+                type: object
+                x-examples: {}
+                description: |-
+                  The Transaction object represents an exchange of value between two accounts.
+                  Any amount of any type of currency can be exchanged.
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    description: The id of the transaction.
+                  from:
+                    example: acc_0o5Fs0EELR0fUjHjbCnEtdUwQe3
+                    type: string
+                    description: |-
+                      The id of payer of the transaction.
+                      It can be any id you choose, if never used before, it will be created.
+                  to:
+                    type: string
+                    example: acc_1ujtsdegvSTl8PAuAdqWYSMnLOv
+                    description: |-
+                      The id of payee of the transaction.
+                      It can be any id you choose, if never used before, it will be created.
+                  date:
+                    type: string
+                    format: date-time
+                    description: The date the transaction was created.
+                  metadata:
+                    type: array
+                    description: A list of metadata you can add to the transaction.
+                    items:
+                      type: string
+                  amount:
+                    type: integer
+                  currency:
+                    type: string
+                required:
+                  - id
+                  - from
+                  - to
+                  - date
+                  - amount
+                  - currency
+              examples:
+                Simple:
+                  value:
+                    id: 123Fs0EELR0fUjHjbCnEtdUwfewa
+                    from: Alice
+                    to: Bob
+                    date: '2020-02-16T15:01:15Z'
+                    amount: 1000
+                    currency: USD
+      operationId: create-transaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: transaction
+              type: object
+              x-examples: {}
+              description: |-
+                The transaction object represents an exchange of value between two accounts.
+                Any amount of any type of currency can be exchanged.
+              properties:
+                from:
+                  example: acc_0o5Fs0EELR0fUjHjbCnEtdUwQe3
+                  type: string
+                  description: |-
+                    The id of payer of the transaction.
+                    It can be any id you choose, if never used before, it will be created.
+                to:
+                  type: string
+                  example: acc_1ujtsdegvSTl8PAuAdqWYSMnLOv
+                  description: |-
+                    The id of payee of the transaction.
+                    It can be any id you choose, if never used before, it will be created.
+                metadata:
+                  type: array
+                  description: A list of metadata you can add to the transaction.
+                  items:
+                    type: string
+                amount:
+                  type: integer
+                currency:
+                  type: string
+              required:
+                - from
+                - to
+                - amount
+                - currency
+            examples:
+              Simple:
+                value:
+                  from: Alice
+                  to: Bob
+                  currency: usd
+                  amount: 1000
+        description: The details of the Transaction being created.
+      description: |-
+        ## Create Transactions
+        Creates a Transaction.
+      parameters:
+        - schema:
+            type: string
+            default: application/json
+          in: header
+          name: Content-Type
+          description: ''
+      security: []
+      tags:
+        - ledger
+    parameters: []
+    get:
+      summary: List Transactions
+      operationId: get-transactions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/transaction'
+      description: |-
+        ## List an Account Transactions
+        List Transactions from an Account.
+      parameters:
+        - schema:
+            type: string
+            example: Alice
+          in: query
+          name: account
+          description: The id of the Account.
+          required: true
+      tags:
+        - ledger
+  /balances:
+    get:
+      summary: List Balances
+      operationId: list-balances
+      parameters:
+        - schema:
+            type: string
+            example: Alice
+          in: query
+          name: account
+          description: The ID of the Account
+          required: true
+      description: |-
+        ## List an Account Balances
+        Retrieve a list of the Balances from the Account with the given ID.
+      security: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/account'
+      tags:
+        - ledger
+components:
+  schemas:
+    account:
+      title: Account
+      type: array
+      description: |-
+        Accounts objects represents the holders of any value in your app.
+        It can be used to represet a customers, a merchants, terminals, or anything that logically or phisically holds any type of value for a given time.
+        An Account can have one or more Balances.
+      x-examples: {}
+      items:
+        $ref: '#/components/schemas/balance'
+      x-tags:
+        - ledger
+    balance:
+      title: Balance
+      type: object
+      x-examples: {}
+      description: |-
+        Balances are part of the Account object, representing the amounts of a given currency being held by an Account.
+        Value will move between Accounts in your app by adding (credit) and removing (debit) it from Balances.
+        Balances are created as they are used. If it exists, a debit or credit is placed to an existing balance, otherwise we create and charge it right the way.
+      properties:
+        currency:
+          type: string
+          example: usd
+          description: |-
+            Currencies are the types of commodities kept in balances.
+            If not otherwise specified, any currency can be used and will work just fine. It can be a crypto asset, loyalty points, monetary currencies, gold, or anything you can think of.
+        amount:
+          type: integer
+          example: 1000
+          description: 'Amount of this balance. A positive integer representing the smallest currency unit (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency).'
+      required:
+        - currency
+        - amount
+      x-tags:
+        - ledger
+    transaction:
+      title: Transaction
+      type: object
+      x-examples: {}
+      description: |-
+        The Transaction object represents an exchange of value between two Account's Balances.
+        Transaction are exchanges of any type or amount of Currencies between Accounts.
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The id of the transaction.
+        from:
+          type: string
+          example: Alice
+          description: |-
+            The id of payer of the transaction.
+            It can be any id you choose, if never used before, it will be created.
+        to:
+          type: string
+          example: Bob
+          description: |-
+            The id of payee of the transaction.
+            It can be any id you choose, if never used before, it will be created.
+        date:
+          type: string
+          format: date-time
+          description: The date the transaction was created.
+        metadata:
+          type: array
+          description: A list of metadata you can add to the transaction.
+          items:
+            type: string
+        currency:
+          type: string
+          example: usd
+        amount:
+          type: integer
+          example: 1000
+        balance:
+          type: integer
+          example: 5000
+          description: The Balance after the Transaction.
+      required:
+        - from
+        - to
+        - currency
+        - amount
+      x-tags:
+        - ledger
+  securitySchemes:
+    secret_key:
+      type: http
+      scheme: basic
+      description: ''
+tags:
+  - name: ledger
+  - name: analytics
+security:
+  - API Key - 1: []

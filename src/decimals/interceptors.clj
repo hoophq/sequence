@@ -5,16 +5,13 @@
             [clojure.data.json :as json]
             [clojure.tools.logging :as log]
             [clojure.walk]
-            [clojure.core.async :as async]
             [spec-tools.core :as st]
             [clojure.spec.alpha :as s]
             [decimals.security :as sec]
             [decimals.crypto :as crypto]
             [decimals.transactions :as tx]
-            [decimals.braintree :as braintree]
             [decimals.analytics :as analytics]
-            [decimals.balances :as b]
-            [decimals.cache :as c]))
+            [decimals.balances :as b]))
 
 (def msg
   {:generic { :message "Sorry, we had a problem. Please, try again or reach out."}

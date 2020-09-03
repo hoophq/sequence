@@ -1,0 +1,25 @@
+name: Clojure CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: lein deps
+    - name: Run tests
+      run: lein test
+    - name: Docker build
+      run: docker build -t docker.pkg.github.com/decimals/sequence/sequence:0.0.1 .
+    - name: Docker push
+      run: |
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login https://docker.pkg.github.com -u ${{ secrets.GITHUB_TOKEN }} --password-stdin
+        docker push docker.pkg.github.com/decimals/sequence/sequence:0.0.1
