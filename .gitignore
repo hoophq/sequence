@@ -36,5 +36,3 @@ profiles.clj
 # Builds
 out/
 build/
-
-dynamodb_data/
