@@ -5,7 +5,7 @@ Sequence
 
 - Website: https://decimals.app/sequence
 - Community: [Decimals Slack](https://decimalsapp.slack.com)
-- Documentation: [https://docs.decimals.app/](https://docs.decimals.app/)
+- Documentation: [https://docs.decimals.app/](https://docs.decimals.app/docs/sequence)
 
 <img alt="Sequence" src="https://decimals.app/dist/images/sequence.png" width="600px">
 
