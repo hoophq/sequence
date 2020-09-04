@@ -1,3 +1,4 @@
+
 # Getting Started
 
 The Sequence API is composed of the three main endpoints, the simplicity is one of the many powerful features of the API.
@@ -7,6 +8,10 @@ POST /v1/transactions
 GET  /v1/transactions?account={id}
 GET  /v1/balances?account={id}
 ```
+
+### Try out the API collections
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/33cfd73e447946a7171d#?env%5BTest%20Keys%5D=W3sia2V5IjoicHVibGljX2tleSIsInZhbHVlIjoicGtfMWVIWnVyMXpFMlY2M005d2hJTVBYTXB6VWZlIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJzZWNyZXRfa2V5IiwidmFsdWUiOiJza18wZDA0Nzc5NDA3NzgyZjkyOTliYTkwOTVjZWQzMjRkYSIsImVuYWJsZWQiOnRydWV9XQ==) [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Decimals%20Starter&uri=https%3A%2F%2Fgist.githubusercontent.com%2Fandriosr%2F08789da580b69f666820b6ddefcabaa5%2Fraw%2F2ca157bd059ef71ae33a78421354861777930745%2Fstarter.json)
 
 #### Get your Keys
 
