@@ -1,6 +1,6 @@
 # Getting Started
 
-Decimals API is composed of the three main endpoints, the simplicity is one of the many powerful features of the API.
+The Sequence API is composed of the three main endpoints, the simplicity is one of the many powerful features of the API.
 
 ```javascript
 POST /v1/transactions
