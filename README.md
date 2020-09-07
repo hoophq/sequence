@@ -18,7 +18,7 @@ The key features of Sequence are:
 - **Multi-Tenant**: Run multiple ledgers using the same infrastructure. Simply setup multiple tenants in the configurations and use the different API keys.
 
 
-- **No-SQL powered**: Sequence runs on top of a No-SQL database. It is horizontally scalable from the 12-factors contianer to the persistency layer.
+- **No-SQL powered**: Sequence runs on top of a No-SQL database. It is horizontally scalable from the 12-factors container to the persistency layer.
 
 - **Immutable**: Most existing ledger use database updates. This is bad for a ledger. Sequence is immutable. The design of the database allows for consistency of balances without a single field using updateds.
 
@@ -54,7 +54,7 @@ docker run -p 8910:8910 docker.pkg.github.com/decimals/sequence/sequence:0.0.1
 
 ## Configurations
 
-All configurations are loaded from environment varialbes. The available configurations are:
+All configurations are loaded from environment variables. The available configurations are:
 
 | environment variable | configuration | dev profile |
 |----------------------|---|---------------|
