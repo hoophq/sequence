@@ -6,7 +6,7 @@
 
 (defstate analytics :start (try
                              (a/initialize (env :segment-key))
-                             (catch Exception e (log/warnf "failed to initialize analytics: %s" (.message e)))))
+                             (catch Exception e (log/warnf "failed to initialize analytics: %s" (.getMessage e)))))
 
 (defn track [context event traits]
   (if-let [email (get-in context [:customer :email])]
