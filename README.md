@@ -4,7 +4,7 @@ Sequence
 ![Sequence CI](https://github.com/decimals/sequence/workflows/Clojure%20CI/badge.svg)
 
 - Website: https://decimals.app/sequence
-- Community: [Decimals Slack](https://decimalsapp.slack.com)
+- Community: [Decimals Slack](https://docs.google.com/forms/d/1K_X6VlnNufptkRqc3oqg0GqzBH7NXb6AAhCd3ITjstU)
 - Documentation: [https://docs.decimals.app/](https://docs.decimals.app/docs/sequence)
 
 <img alt="Sequence" src="https://decimals.app/dist/images/sequence.png" width="600px">
