@@ -6,9 +6,9 @@
 
 ;FIXME: persist connection
 (def client-opts {
-                  :access-key (env :aws-key-id)
-                  :secret-key (env :aws-access-key)
-                  :dynamodb-endpoint (env :dynamodb-endpoint)
+                  :access-key (:aws-access-key-id env)
+                  :secret-key (:aws-secret-access-key env)
+                  :endpoint (:dynamodb-endpoint env)
                   })
 
 (defn query [k]
