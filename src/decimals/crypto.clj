@@ -16,7 +16,7 @@
 (defn map->md5
   [data]
   (->> data
-       json/write-str
+       sorted-map
        .getBytes
        (.digest (MessageDigest/getInstance "MD5"))
        (BigInteger. 1)
