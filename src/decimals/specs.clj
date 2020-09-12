@@ -17,7 +17,8 @@
 (s/def ::tx/transaction (s/keys :req-un [::tx/from
                                          ::tx/to
                                          ::tx/amount
-                                         ::tx/currency]))
+                                         ::tx/currency]
+                                :opt-un [::tx/metadata]))
 
 (s/def ::tx/pub-transaction (s/keys :req-un [::tx/id
                                              ::tx/from
@@ -25,6 +26,7 @@
                                              ::tx/amount
                                              ::tx/balance
                                              ::tx/currency
+                                             ::tx/metadata
                                              ::tx/date]))
 
 (s/def ::b/account (s/and string? #(> (count %) 1)))
