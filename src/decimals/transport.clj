@@ -13,7 +13,8 @@
 
 (def service-map
   {::http/routes i/routes
-   ::http/allowed-origins {:allowed-origins (read-string (:allowed-origins env))
+   ::http/allowed-origins {:allowed-origins (when-let [origins (:allowed-origins env)]
+                                              (read-string origins))
                            :methods "GET,POST"}
    ::http/type   :jetty
    ::http/host   "0.0.0.0"
