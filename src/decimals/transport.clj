@@ -13,8 +13,7 @@
 
 (def service-map
   {::http/routes i/routes
-   ::http/allowed-origins {:allowed-origins
-                           ["https://decimals.stoplight.io"]
+   ::http/allowed-origins {:allowed-origins (:allowed-origins env)
                            :methods "GET,POST"}
    ::http/type   :jetty
    ::http/host   "0.0.0.0"
