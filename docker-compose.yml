@@ -11,6 +11,7 @@ services:
     ports:
     - "8910:8910"
     environment:
+      ALLOWED_ORIGINS: '["https://decimals.stoplight.io"]'
       AWS_ACCESS_KEY_ID: 'DUMMYIDEXAMPLE'
       AWS_SECRET_ACCESS_KEY: 'DUMMYEXAMPLEKEY'
       DYNAMODB_ENDPOINT: 'http://dynamodb:8000'
