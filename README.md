@@ -68,7 +68,7 @@ Configurations can also be loaded from the `profiles.clj` file, where the dev co
 ## Developing Sequence
 
 1. Start a new REPL: `lein repl`
-2. Start Sequence in dev-mode: `(def dev-serv (run-dev))`
+2. Start Sequence in dev-mode: `(def dev-serv (start-dev))`
 3. Connect your editor to the running REPL session.
    Re-evaluated code will be seen immediately in the service.
 
