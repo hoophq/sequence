@@ -56,11 +56,12 @@ docker run -p 8910:8910 docker.pkg.github.com/decimals/sequence/sequence:0.0.1
 
 All configurations are loaded from environment variables. The available configurations are:
 
-| environment variable | configuration | dev profile |
-|----------------------|---|---------------|
-| `DYNAMODB_ENDPOINT`  | The host for the DynamoDB instance. Mostly used for local development.  | `http://localhost:8000` |
-| `SEGMENT_KEY`         | Optional Segment.io key to generate analytics events. |                         |
-| `KEYS`                 | A string with a list of tenants and their `sha256` API keys digests. In json format. | `[{ "name": "test","email": "test@decimals.app", "public-key": "abc", "secret-key-hash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"}]` |
+| environment variable | configuration                                                                                   | dev profile                                                                                                                                                    |
+|----------------------|-------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `DYNAMODB_ENDPOINT`  | The host for the DynamoDB instance. Mostly used for local development.                          | `http://localhost:8000`                                                                                                                                        |
+| `SEGMENT_KEY`        | Optional Segment.io key to generate analytics events.                                           |                                                                                                                                                                |
+| `KEYS`               | A string with a list of tenants and their `sha256` API keys digests. In json format.            | `[{ "name": "test","email": "test@decimals.app", "public-key": "abc", "secret-key-hash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"}]` |
+| `ALLOWED_ORIGINS`    | A list of accepted CORS hosts. Example:  `ALLOWED_ORIGINS= '["https://decimals.stoplight.io"]'` |                                                                                                                                                                |
 
 Configurations can also be loaded from the `profiles.clj` file, where the dev configurations are setup.
 
