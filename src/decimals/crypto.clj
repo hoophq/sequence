@@ -13,14 +13,18 @@
        (BigInteger. 1)
        (format "%032x")))
 
-(defn sort-map [data]
-  (into (sorted-map) (sort-by first (seq data))))
+(defn map->tuple [data]
+  (str
+   (:id data)
+   (:from data)
+   (:to data)
+   (:amount data)
+   (:currency data)))
 
 (defn map->md5
   [data]
   (->> data
-       sort-map
-       prn-str
+       map->tuple
        .getBytes
        (.digest (MessageDigest/getInstance "MD5"))
        (BigInteger. 1)
