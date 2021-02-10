@@ -13,10 +13,18 @@
        (BigInteger. 1)
        (format "%032x")))
 
+(defn map->tuple [data]
+  (str
+   (:id data)
+   (:from data)
+   (:to data)
+   (:amount data)
+   (:currency data)))
+
 (defn map->md5
   [data]
   (->> data
-       json/write-str
+       map->tuple
        .getBytes
        (.digest (MessageDigest/getInstance "MD5"))
        (BigInteger. 1)
