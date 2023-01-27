@@ -5,7 +5,7 @@ Sequence
 
 - Website: https://decimals.app/sequence
 - Community: [Decimals Slack](https://docs.google.com/forms/d/1K_X6VlnNufptkRqc3oqg0GqzBH7NXb6AAhCd3ITjstU)
-- Documentation: [https://docs.decimals.app/](https://docs.decimals.app/docs/sequence)
+- Documentation: [https://decimals.stoplight.io/docs/sequence/](https://decimals.stoplight.io/docs/sequence)
 
 <img alt="Sequence" src="https://decimals.app/dist/images/sequence.png" width="600px">
 
