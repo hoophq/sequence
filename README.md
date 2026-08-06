@@ -73,5 +73,5 @@ Configurations can also be loaded from the `profiles.clj` file, where the dev co
    Re-evaluated code will be seen immediately in the service.
 
 ## Links
-* [Sequence design](https://decimals.substack.com/p/things-i-wish-i-knew-before-building)
+* [Sequence design](https://web.archive.org/web/20210523054802/https://decimals.substack.com/p/things-i-wish-i-knew-before-building)
 * [Open-source ledgers](http://decimals.app)
